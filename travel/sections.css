@@ -795,7 +795,12 @@ html[data-theme="light"] .hyper__mock { background: linear-gradient(165deg, #0d0
 /* ---------- TESTIMONIALS / SOCIAL PROOF ---------- */
 .proof { position: relative; z-index: 1; padding: 110px 0 130px; }
 .proof__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-@media (max-width: 900px) { .proof__grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .proof__grid { grid-template-columns: 1fr; }
+  /* without this, .proof__stat's `span 3` makes Grid auto-create 2 implicit
+     columns, silently keeping the grid 3-wide and overflowing on mobile */
+  .proof__stat { grid-column: 1 / -1; }
+}
 
 .proof__stat {
   grid-column: span 3;

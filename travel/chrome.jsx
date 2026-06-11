@@ -19,9 +19,19 @@ function Loader() {
   );
 }
 
+const NAV_LINKS = [
+  ["#intelligence", "Intelligence"],
+  ["#features", "Features"],
+  ["#hyperlocal", "Hyperlocal"],
+  ["#explore", "Explore"],
+  ["#pricing", "Pricing"],
+];
+
 function Nav({ theme, onToggleTheme }) {
   const [hidden, setHidden] = useState(false);
+  const [open, setOpen] = useState(false);
   const last = useRef(0);
+
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
@@ -31,24 +41,77 @@ function Nav({ theme, onToggleTheme }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // close the mobile menu when the viewport grows back to desktop
+  useEffect(() => {
+    const onResize = () => { if (window.innerWidth > 880) setOpen(false); };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // lock body scroll + close on Escape while the mobile menu is open
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => { if (e.key === "Escape") setOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
-    <nav className="nav" style={{ ['--nav-y']: hidden ? "-120px" : "0px" }}>
-      <a href="#top" className="nav__logo">
-        <span className="nav__dot"/>
-        <Wordmark h={17}/>
-      </a>
-      <div className="nav__links">
-        <a className="nav__link" href="#intelligence">Intelligence</a>
-        <a className="nav__link" href="#features">Features</a>
-        <a className="nav__link" href="#hyperlocal">Hyperlocal</a>
-        <a className="nav__link" href="#explore">Explore</a>
-        <a className="nav__link" href="#pricing">Pricing</a>
+    <React.Fragment>
+      <nav className={"nav" + (open ? " is-open" : "")} style={{ ['--nav-y']: (hidden && !open) ? "-120px" : "0px" }}>
+        <a href="#top" className="nav__logo" onClick={() => setOpen(false)}>
+          <span className="nav__dot"/>
+          <Wordmark h={17}/>
+        </a>
+        <div className="nav__links">
+          {NAV_LINKS.map(([href, label]) => (
+            <a key={href} className="nav__link" href={href}>{label}</a>
+          ))}
+        </div>
+        <button className="theme-toggle" onClick={onToggleTheme} aria-label="Toggle theme">
+          {theme === "dark" ? <Icon.Sun/> : <Icon.Moon/>}
+        </button>
+        <button className="nav__cta">Start free</button>
+        <button
+          className={"nav__burger" + (open ? " is-active" : "")}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <span/><span/><span/>
+        </button>
+      </nav>
+
+      <div
+        className={"nav-mobile" + (open ? " is-open" : "")}
+        onClick={() => setOpen(false)}
+        aria-hidden={!open}
+      >
+        <div className="nav-mobile__panel" onClick={(e) => e.stopPropagation()}>
+          <div className="nav-mobile__links">
+            {NAV_LINKS.map(([href, label], i) => (
+              <a
+                key={href}
+                className="nav-mobile__link"
+                href={href}
+                style={{ ['--i']: i }}
+                onClick={() => setOpen(false)}
+              >
+                <span>{label}</span>
+                <Icon.Arrow/>
+              </a>
+            ))}
+          </div>
+          <button className="nav-mobile__cta" onClick={() => setOpen(false)}>Start free</button>
+        </div>
       </div>
-      <button className="theme-toggle" onClick={onToggleTheme} aria-label="Toggle theme">
-        {theme === "dark" ? <Icon.Sun/> : <Icon.Moon/>}
-      </button>
-      <button className="nav__cta">Start free</button>
-    </nav>
+    </React.Fragment>
   );
 }
 
