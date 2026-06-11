@@ -297,7 +297,24 @@ function LogoMark({ size = 18 }) {
   );
 }
 
+/* Brand wordmark — theme-aware two-tone "Alto.travel" built from the logo
+   artwork. Body letters take var(--ink) (auto black/white per theme);
+   the "lt" accent takes var(--mint) to match the site palette. */
+function Wordmark({ h = 18, className = "" }) {
+  return (
+    <span
+      className={"wordmark " + className}
+      style={{ ['--wm-h']: h + "px" }}
+      role="img"
+      aria-label="Alto.travel"
+    >
+      <span className="wordmark__layer wordmark__ink" aria-hidden="true"/>
+      <span className="wordmark__layer wordmark__accent" aria-hidden="true"/>
+    </span>
+  );
+}
+
 /* expose */
 Object.assign(window, {
-  Reveal, useScrollProgress, useScrollY, useCountUp, Icon, Social, LogoMark,
+  Reveal, useScrollProgress, useScrollY, useCountUp, Icon, Social, LogoMark, Wordmark,
 });

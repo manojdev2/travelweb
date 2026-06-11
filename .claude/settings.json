@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import os;[os.remove\\('uploads/'+f\\) for f in ['_logo_on_dark.png','_preview_light.png','_preview_dark.png']]\")"
+    ]
+  }
+}

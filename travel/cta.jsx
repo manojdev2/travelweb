@@ -37,7 +37,7 @@ function Footer() {
       <div className="container">
         <div className="footer__grid">
           <div>
-            <div className="footer__brand"><LogoMark size={24}/> Alto.Travel</div>
+            <div className="footer__brand"><Wordmark h={22}/></div>
             <p className="footer__tagline">AI + human intelligence for trips that actually feel local. Plan smarter, travel better — from anywhere, on any budget.</p>
             <div className="footer__socials">
               {socials.map((s, i) => <button className="footer__social" key={i} aria-label={s.label}>{s.ico}</button>)}
@@ -51,7 +51,7 @@ function Footer() {
           ))}
         </div>
         <div className="footer__bottom">
-          <span>© 2026 Alto.Travel · Built for the curious</span>
+          <span className="footer__copy">© 2026 <Wordmark h={13} className="wordmark--inline"/> · Built for the curious</span>
           <span>SF · Lisbon · Bali · Goa</span>
         </div>
       </div>

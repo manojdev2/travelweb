@@ -10,7 +10,7 @@ function Loader() {
     <div className={"loader" + (done ? " is-done" : "")}>
       <div className="loader__inner">
         <div className="loader__mark">
-          Alto<span className="loader__dot"/><b>Travel</b>
+          <Wordmark h={44}/>
         </div>
         <div className="loader__bar"><i/></div>
         <div className="loader__label">Mapping your next adventure</div>
@@ -35,8 +35,7 @@ function Nav({ theme, onToggleTheme }) {
     <nav className="nav" style={{ ['--nav-y']: hidden ? "-120px" : "0px" }}>
       <a href="#top" className="nav__logo">
         <span className="nav__dot"/>
-        <LogoMark size={18}/>
-        <span>Alto<b style={{ fontWeight: 400, color: "var(--ink-3)" }}>.</b>Travel</span>
+        <Wordmark h={17}/>
       </a>
       <div className="nav__links">
         <a className="nav__link" href="#intelligence">Intelligence</a>

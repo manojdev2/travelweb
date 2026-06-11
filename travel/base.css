@@ -184,6 +184,34 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 0 12px var(--mint);
   animation: pulse 2.2s ease-in-out infinite;
 }
+
+/* ---------- brand wordmark (theme-aware, masked from logo art) ---------- */
+.wordmark {
+  position: relative;
+  display: inline-block;
+  height: var(--wm-h, 18px);
+  width: calc(var(--wm-h, 18px) * 6.8); /* logo art is 408×60 */
+  flex-shrink: 0;
+}
+.wordmark__layer {
+  position: absolute; inset: 0;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-size: contain; mask-size: contain;
+}
+.wordmark__ink {
+  background: var(--ink);
+  -webkit-mask-image: url("logo-full-mask.png");
+  mask-image: url("logo-full-mask.png");
+  transition: background 600ms ease;
+}
+.wordmark__accent {
+  background: var(--mint);
+  -webkit-mask-image: url("logo-accent-mask.png");
+  mask-image: url("logo-accent-mask.png");
+}
+.wordmark--inline { vertical-align: -2px; margin: 0 2px; }
+.footer__copy { display: inline-flex; align-items: center; }
 .nav__links { display: flex; gap: 24px; white-space: nowrap; }
 .nav__link {
   color: var(--ink-2);
