@@ -51,8 +51,7 @@ function Footer() {
           ))}
         </div>
         <div className="footer__bottom">
-          <span className="footer__copy">© 2026 <Wordmark h={13} className="wordmark--inline"/> · Built for the curious</span>
-          <span>SF · Lisbon · Bali · Goa</span>
+          <span className="footer__copy">© 2026 <Wordmark h={13} className="wordmark--inline"/></span>
         </div>
       </div>
     </footer>
