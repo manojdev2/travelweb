@@ -60,7 +60,7 @@ function PricingSection() {
               <div className="price-card__price"><small>₹</small>{priceOf(p.monthly).toLocaleString("en-IN")}<small>/mo</small></div>
               <div className="price-card__cycle">{yearly ? `Billed ₹${(priceOf(p.monthly) * 12).toLocaleString("en-IN")} yearly` : "Billed monthly"}</div>
               <p className="price-card__desc">{p.desc}</p>
-              <button className={"btn btn--" + p.btn + " price-card__btn"}><span>{p.rec ? "Start free trial" : "Choose " + p.name}</span></button>
+              <button className={"btn btn--" + p.btn + " price-card__btn"} onClick={() => { window.location.href = "https://altotravelai.vercel.app/"; }}><span>{p.rec ? "Start free trial" : "Choose " + p.name}</span></button>
               <ul className="price-card__feats">
                 {p.feats.map((f, j) => <li key={j}><Check/>{f}</li>)}
               </ul>

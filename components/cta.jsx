@@ -35,7 +35,7 @@ function CTASection() {
 
         <Reveal delay={500}>
           <div className="cta__ctas">
-            <button className="btn btn--primary" style={{ padding: '18px 28px', fontSize: 15 }}>
+            <button className="btn btn--primary" style={{ padding: '18px 28px', fontSize: 15 }} onClick={() => { window.location.href = "https://altotravelai.vercel.app/"; }}>
               Reserve Alto.EV
               <Icon.Arrow className="btn__arrow"/>
             </button>

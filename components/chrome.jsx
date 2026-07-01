@@ -18,7 +18,7 @@ function Nav({ theme, onToggleTheme }) {
       <button className="theme-toggle" onClick={onToggleTheme} aria-label="Toggle theme">
         {theme === "dark" ? <Icon.Sun/> : <Icon.Moon/>}
       </button>
-      <button className="nav__cta">Reserve</button>
+      <button className="nav__cta" onClick={() => { window.location.href = "https://altotravelai.vercel.app/"; }}>Reserve</button>
     </nav>
   );
 }

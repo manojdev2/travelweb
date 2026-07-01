@@ -55,7 +55,7 @@ function HeroScene() {
           </Reveal>
           <Reveal delay={400}>
             <div className="hero__ctas">
-              <button className="btn btn--primary">
+              <button className="btn btn--primary" onClick={() => { window.location.href = "https://altotravelai.vercel.app/"; }}>
                 Reserve early access <Icon.Arrow className="btn__arrow" />
               </button>
               <button className="btn btn--ghost">
