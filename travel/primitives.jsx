@@ -2,6 +2,21 @@
 
 const { useState, useEffect, useRef, useMemo, useLayoutEffect } = React;
 
+/* ---------- App navigation (treat this landing page + the main_files app as one) ----------
+   Every "enter the app" CTA routes here. Locally we hop to the Next.js dev server so the
+   two behave as one product in dev; in production we go to the deployed app. */
+const ALTO_APP_URL = (() => {
+  try {
+    const h = window.location.hostname;
+    if (h === "localhost" || h === "127.0.0.1") return "http://localhost:3000/";
+  } catch {}
+  return "https://altotravelai.vercel.app/";
+})();
+function goToApp(path = "") {
+  const base = ALTO_APP_URL.replace(/\/$/, "");
+  window.location.href = path ? base + "/" + path.replace(/^\//, "") : base + "/";
+}
+
 /* ---------- Reveal-on-scroll ---------- */
 function Reveal({ children, delay = 0, className = "", blur = false, slow = false, as: Tag = "div", ...rest }) {
   const ref = useRef(null);

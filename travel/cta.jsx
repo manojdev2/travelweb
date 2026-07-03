@@ -9,7 +9,7 @@ function CTASection() {
           <div className="eyebrow cta__eyebrow">Ready when you are</div>
           <h2 className="cta__headline">Your next adventure <em>starts here.</em></h2>
           <p className="cta__sub">Join 10,000+ travelers planning smarter. Free to start, no card required.</p>
-          <form className="cta__form" onSubmit={(e) => e.preventDefault()}>
+          <form className="cta__form" onSubmit={(e) => { e.preventDefault(); goToApp(); }}>
             <input className="cta__input" type="email" placeholder="you@email.com" aria-label="Email"/>
             <button className="btn btn--primary" type="submit"><span>Get started free</span><Icon.Arrow className="btn__arrow"/></button>
           </form>

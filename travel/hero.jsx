@@ -101,7 +101,7 @@ function HeroScene() {
                 seconds, verified by people who live there.
               </p>
               <div className={"hero__ctas" + (step >= 6 ? " is-shown" : "")}>
-                <button className="btn btn--primary" onClick={() => { window.location.href = "https://altotravelai.vercel.app/"; }}><span>Start planning free</span><Icon.Arrow className="btn__arrow"/></button>
+                <button className="btn btn--primary" onClick={() => { goToApp(); }}><span>Start planning free</span><Icon.Arrow className="btn__arrow"/></button>
                 <button className="btn btn--ghost"><span className="btn__play"><Icon.Play style={{ width: 9, height: 9 }}/></span> Watch demo</button>
               </div>
 

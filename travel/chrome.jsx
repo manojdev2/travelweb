@@ -77,7 +77,7 @@ function Nav({ theme, onToggleTheme }) {
         <button className="theme-toggle" onClick={onToggleTheme} aria-label="Toggle theme">
           {theme === "dark" ? <Icon.Sun/> : <Icon.Moon/>}
         </button>
-        <button className="nav__cta" onClick={() => { window.location.href = "https://altotravelai.vercel.app/"; }}>Start free</button>
+        <button className="nav__cta" onClick={() => { goToApp(); }}>Start free</button>
         <button
           className={"nav__burger" + (open ? " is-active" : "")}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -108,7 +108,7 @@ function Nav({ theme, onToggleTheme }) {
               </a>
             ))}
           </div>
-          <button className="nav-mobile__cta" onClick={() => { setOpen(false); window.location.href = "https://altotravelai.vercel.app/"; }}>Start free</button>
+          <button className="nav-mobile__cta" onClick={() => { setOpen(false); goToApp(); }}>Start free</button>
         </div>
       </div>
     </React.Fragment>
